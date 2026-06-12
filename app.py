@@ -33,19 +33,6 @@ def profile():
     return render_template("profile.html")
 
 
-@app.route("/recommendations")
-def recommendations():
-
-    schemes = [
-        "PM Scholarship Scheme",
-        "PM Awas Yojana",
-        "Startup India Scheme"
-    ]
-
-    return render_template(
-        "recommendations.html",
-        schemes=schemes
-    )
 
 
 @app.route("/scheme/<name>")
