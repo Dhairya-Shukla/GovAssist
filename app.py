@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from utils.eligibility_checker import check_eligibility
 
 app = Flask(__name__)
 
@@ -18,6 +19,8 @@ def profile():
         income = request.form.get("income")
         state = request.form.get("state")
         category = request.form.get("category")
+
+        matched_schemes = check_eligibility(age, gender, occupation)
 
         return render_template(
             "recommendations.html",
