@@ -1,0 +1,208 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+body{
+    background: linear-gradient(135deg, #eef2ff, #f8f9fa);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+    padding: 60px 0;
+    background: linear-gradient(135deg, #0d6efd, #4f8cff);
+    color: white;
+}
+
+.hero h1{
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.feature-card{
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.hidden-card{
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.show-card{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.dashboard-card{
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover{
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2,
+.dashboard-card h1{
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-icon{
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-control,
+.form-select{
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #d0d7de;
+}
+
+.form-control:focus,
+.form-select:focus{
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,0.15);
+}
+
+.form-label{
+    font-weight: 600;
+    color: #444;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    border-radius: 12px;
+    padding: 12px 24px;
+}
+
+.btn-primary{
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover{
+    transform: translateY(-3px);
+}
+
+/* =========================
+   RECOMMENDATIONS PAGE
+========================= */
+
+.scheme-card{
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.scheme-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.scheme-card h4{
+    margin-bottom: 15px;
+}
+
+.scheme-card i{
+    color: #0d6efd;
+    margin-right: 8px;
+}
+
+/* =========================
+   PROGRESS BARS
+========================= */
+
+.progress{
+    height: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar{
+    font-weight: bold;
+}
+
+/* =========================
+   ALERTS
+========================= */
+
+.alert{
+    border-radius: 15px;
+}
+
+/* =========================
+   SCHEME DETAILS PAGE
+========================= */
+
+.list-group-item{
+    border-radius: 10px !important;
+    margin-bottom: 8px;
+}
+
+
+footer{
+    margin-top: 30px;
+}
+
+footer p{
+    margin-bottom: 8px;
+}
