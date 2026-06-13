@@ -88,7 +88,7 @@
 
         <div class="col-md-4 mb-3">
             <div class="dashboard-card text-center">
-                <h2>3</h2>
+                <h2>{{ schemes|length }}</h2>
                 <p>Total Matches</p>
             </div>
         </div>
@@ -125,18 +125,14 @@
     <!-- Scheme Cards -->
     <div class="row">
 
-        <!-- Card 1 -->
+        {% for scheme in schemes %}
         <div class="col-lg-4 mb-4">
 
             <div class="scheme-card">
 
-                <span class="badge bg-warning text-dark mb-3">
-                    🏆 Best Match
-                </span>
-
                 <h4>
                     <i class="bi bi-bank"></i>
-                    PM-Kisan
+                    {{ scheme }}
                 </h4>
 
                 <p>
@@ -237,13 +233,15 @@
                 </div>
 
                 <a href="/scheme/skill-development"
+                    href="/scheme/{{ scheme }}"
                    class="btn btn-primary">
                     View Details
-                </a>
+                </>
 
             </div>
 
         </div>
+        {% endfor %}
 
     </div>
 

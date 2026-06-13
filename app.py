@@ -35,6 +35,17 @@ def profile():
         
         return redirect(url_for("recommendations"))
     
+        return render_template(
+            "recommendations.html",
+            name=name,
+            age=age,
+            gender=gender,
+            occupation=occupation,
+            income=income,
+            state=state,
+            category=category,
+            schemes=matched_schemes
+        )
     return render_template("profile.html")
 
 
