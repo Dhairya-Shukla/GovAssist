@@ -76,6 +76,9 @@
             <div class="col-md-4">
                 <p>🏷️<strong>Category:</strong> {{category}}</p>
             </div>
+            <div class="col-md-4">
+                <p>👤<strong>Gender:</strong> {{gender}}</p>
+            </div>
 
         </div>
 
@@ -95,15 +98,24 @@
 
         <div class="col-md-4 mb-3">
             <div class="dashboard-card text-center">
-                <h2>95%</h2>
-                <p>Best Match</p>
+                {% if schemes %}
+                <h2>{{ schemes[0].name }}</h2>
+                <p>Top Recommendation</p>
+                {% else %}
+                <h2>None</h2>
+                {% endif %}
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
             <div class="dashboard-card text-center">
+                {% if state %}
                 <h2>{{state}}</h2>
                 <p>State</p>
+                {% else %}
+                <h2>Not Specified</h2>
+                <p>State</p>
+                {% endif %}
             </div>
         </div>
 
@@ -118,45 +130,33 @@
 
     </div>
 
-    <div class="alert alert-warning">
-    No matching schemes found.
-    </div>
-
     <!-- Scheme Cards -->
     <div class="row">
 
+    {% if schemes %}
+
         {% for scheme in schemes %}
+
         <div class="col-lg-4 mb-4">
 
             <div class="scheme-card">
 
                 <h4>
                     <i class="bi bi-bank"></i>
-                    {{ scheme }}
+                    {{ scheme.name }}
                 </h4>
 
-                <p>
-                    Financial support scheme for farmers.
+                <span class="scheme-badge">
+                    {{ scheme.occupation }}   
+                </span>
+
+                <p class="scheme-overview mt-2 text-muted">
+                    {{ scheme.category }} • {{ scheme.state }}
+                    {{ scheme.overview[:50] }}...
                 </p>
-                <div class="alert alert-light border mt-3">
 
-                    <strong>Why Recommended?</strong>
-
-                <br>
-
-                    Matches your profile criteria.
-
-                </div>
-
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-success"
-                         style="width:95%">
-                        95%
-                    </div>
-                </div>
-
-                <a href="/scheme/pm-kisan"
-                   class="btn btn-primary">
+                <a href="{{ url_for('scheme_details', name=scheme.name) }}"
+                    class="btn btn-primary">
                     View Details
                 </a>
 
@@ -164,84 +164,15 @@
 
         </div>
 
-        <!-- Card 2 -->
-        <div class="col-lg-4 mb-4">
-
-            <div class="scheme-card">
-
-                <span class="badge bg-success mb-3">
-                    89% Match
-                </span>
-
-                <h4>
-                    <i class="bi bi-mortarboard-fill"></i>
-                    National Scholarship
-                </h4>
-
-                <p>
-                    Scholarship support for students.
-                </p>
-                <div class="alert alert-light border mt-3">
-
-                    <strong>Why Recommended?</strong>
-
-                <br>
-
-                    You are a student and qualify for educational support schemes.
-
-                </div>
-
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-success"
-                         style="width:89%">
-                        89%
-                    </div>
-                </div>
-
-                <a href="/scheme/national-scholarship"
-                   class="btn btn-primary">
-                    View Details
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-lg-4 mb-4">
-
-            <div class="scheme-card">
-
-                <span class="badge bg-success mb-3">
-                    82% Match
-                </span>
-
-                <h4>
-                    <i class="bi bi-briefcase-fill"></i>
-                    Skill Development
-                </h4>
-
-                <p>
-                    Training and employment support programs.
-                </p>
-
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-success"
-                         style="width:82%">
-                        82%
-                    </div>
-                </div>
-
-                <a href="/scheme/skill-development"
-                    href="/scheme/{{ scheme }}"
-                   class="btn btn-primary">
-                    View Details
-                </>
-
-            </div>
-
-        </div>
         {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning">
+            No matching schemes found.
+        </div>
+
+    {% endif %}
 
     </div>
 

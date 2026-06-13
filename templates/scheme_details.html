@@ -33,7 +33,7 @@
             <div>
 
                 <h1 class="fw-bold">
-                    🏆 PM-Kisan
+                    🏆 {{ scheme.name }}
                 </h1>
 
                 <p class="text-muted">
@@ -42,25 +42,18 @@
 
             </div>
 
-<span class="badge bg-warning text-dark fs-6">
-    95% Match
-</span>
+            <span class="badge bg-primary fs-5">
+                {{ scheme.category }}
+            </span>
 
         </div>
 
         <hr>
         <div class="mb-4">
 
-            <label class="fw-bold mb-2">
-                Eligibility Match Score
-            </label>
-
-            <div class="progress">
-
-                <div class="progress-bar bg-success"
-                    style="width:95%">
-                    95%
-                </div>
+            <span class="badge bg-success">
+                Eligible
+            </span>
 
             </div>
 
@@ -69,42 +62,35 @@
         <h3>📋 Overview</h3>
 
         <p>
-            PM-Kisan provides financial assistance to eligible farmers
-            across India.
+           {{ scheme.overview }}
         </p>
 
         <h3 class="mt-4">💰 Benefits</h3>
 
         <ul class="list-group">
 
+            {% for benefit in scheme.benefits %}
             <li class="list-group-item">
-                ₹6000 annual support
+                {{ benefit }}
             </li>
-
-            <li class="list-group-item">
-                Direct bank transfer
-            </li>
-
-            <li class="list-group-item">
-                Nationwide coverage
-            </li>
+            {% endfor %}
 
         </ul>
 
         <h3 class="mt-4">✅ Eligibility</h3>
 
         <ul>
-            <li>Must be a farmer</li>
-            <li>Must have valid documents</li>
-            <li>Must be an Indian citizen</li>
+            {% for item in scheme.eligibility %}
+            <li>{{ item }}</li>
+            {% endfor %}
         </ul>
 
         <h3 class="mt-4">📄 Required Documents</h3>
 
         <ul>
-            <li>Aadhaar Card</li>
-            <li>Bank Account Details</li>
-            <li>Land Records</li>
+            {% for doc in scheme.documents %}
+            <li>{{ doc }}</li>
+            {% endfor %}
         </ul>
 
         <h3 class="mt-4">🤖 Why We Recommended This</h3>
