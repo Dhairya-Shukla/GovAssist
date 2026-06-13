@@ -30,9 +30,9 @@ def profile():
             occupation=occupation,
             income=income,
             state=state,
-            category=category
+            category=category,
+            schemes=matched_schemes
         )
-
     return render_template("profile.html")
 
 
