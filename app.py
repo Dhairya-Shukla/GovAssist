@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from unicodedata import category
+
+from flask import Flask, render_template, request, redirect, url_for , session
 from utils.eligibility_checker import check_eligibility
 
 app = Flask(__name__)
+app.secret_key = "govassist123"
 
 @app.route("/")
 def home():
@@ -22,17 +25,16 @@ def profile():
 
         matched_schemes = check_eligibility(age, gender, occupation)
 
-        return render_template(
-            "recommendations.html",
-            name=name,
-            age=age,
-            gender=gender,
-            occupation=occupation,
-            income=income,
-            state=state,
-            category=category
-        )
-
+        session["name"] = name
+        session["age"] = age
+        session["gender"] = gender
+        session["occupation"] = occupation
+        session["income"] = income
+        session["state"] = state
+        session["category"] = category
+        
+        return redirect(url_for("recommendations"))
+    
     return render_template("profile.html")
 
 
@@ -43,6 +45,20 @@ def scheme_details(name):
     return render_template(
         "scheme_details.html",
         scheme_name=name
+    )
+
+@app.route("/recommendations")
+def recommendations():
+
+    return render_template(
+        "recommendations.html",
+        name=session.get("name"),
+        age=session.get("age"),
+        gender=session.get("gender"),
+        occupation=session.get("occupation"),
+        income=session.get("income"),
+        state=session.get("state"),
+        category=session.get("category")
     )
 
 

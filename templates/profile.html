@@ -36,6 +36,13 @@
                     Enter your details to discover schemes you qualify for
                 </p>
 
+                <div id="loading"
+                    class="alert alert-info text-center mb-3"
+                    style="display:none;">
+                    🔍 Finding the best schemes for you...
+                </div>
+                
+
                 <form action="/profile" method="POST">
 
                     <!-- Name -->
@@ -204,6 +211,14 @@
 new TomSelect("select[name='state']");
 new TomSelect("select[name='occupation']");
 new TomSelect("select[name='category']");
+</script>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(){
+
+    document.getElementById("loading").style.display = "block";
+
+});
 </script>
 
 </body>
