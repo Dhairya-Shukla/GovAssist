@@ -1,10 +1,10 @@
-import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+from google import genai
 
-genai.configure(
-    api_key="your_api_key_here"
-)
+load_dotenv()
 
-model = genai.GenerativeModel("gemini-2.5-flash")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def get_ai_recommendation(profile, schemes):
@@ -32,12 +32,17 @@ def get_ai_recommendation(profile, schemes):
     Do not use ```html.
     """
 
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
 
     return response.text
-print(
-    get_ai_recommendation(
+
+
+if __name__ == "__main__":
+    result = get_ai_recommendation(
         "Age 20, Student, Male, Uttarakhand",
         "NSP, INSPIRE Scholarship"
     )
-)
+    print(result)
