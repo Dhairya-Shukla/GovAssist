@@ -4,8 +4,11 @@ from data.schemes_data import schemes as all_schemes
 from flask import Flask, render_template, request, redirect, url_for , session
 from utils.eligibility_checker import check_eligibility
 
+from config import Config
+
 app = Flask(__name__)
-app.secret_key = "govassist123"
+app.config.from_object(Config)
+app.secret_key = app.config["SECRET_KEY"]
 
 @app.route("/")
 def home():
