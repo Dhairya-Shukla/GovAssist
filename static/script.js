@@ -86,3 +86,28 @@ counters.forEach(counter => {
     updateCounter();
 
 });
+
+
+const searchInput = document.getElementById("searchInput");
+
+if(searchInput){
+
+    searchInput.addEventListener("keyup", function(){
+
+        let value = this.value.toLowerCase();
+
+        document.querySelectorAll(".scheme-item").forEach(card => {
+
+            let text = card.innerText.toLowerCase();
+
+            if(text.includes(value)){
+                card.style.display = "";
+            }else{
+                card.style.display = "none";
+            }
+
+        });
+
+    });
+
+}

@@ -1,4 +1,5 @@
 from unicodedata import category
+from utils.gemini_helper import get_ai_recommendation
 from data.schemes_data import schemes as all_schemes
 from flask import Flask, render_template, request, redirect, url_for , session
 from utils.eligibility_checker import check_eligibility
@@ -63,16 +64,34 @@ def scheme_details(name):
             break
 
     return render_template(
-        "scheme_details.html",
-        scheme=selected_scheme
-    )
+    "scheme_details.html",
+    scheme=selected_scheme,
+    occupation=session.get("occupation"),
+    category=session.get("category"),
+    age=session.get("age"),
+    gender=session.get("gender"),
+    state=session.get("state")
+   )
 
 @app.route("/recommendations")
 def recommendations():
 
     schemes = session.get("schemes", [])
     matched=[s for s in all_schemes if s["name"] in schemes]
+    
 
+    profile_info = f"""
+    Age: {session.get('age')}
+    Gender: {session.get('gender')}
+    Occupation: {session.get('occupation')}
+    Income: {session.get('income')}
+    State: {session.get('state')}
+    Category: {session.get('category')}"""
+    scheme_names = [s["name"] for s in matched]
+    ai_summary = get_ai_recommendation(
+        profile_info,
+        scheme_names
+    )
     return render_template(
         "recommendations.html",
         name=session.get("name"),
@@ -82,7 +101,8 @@ def recommendations():
         income=int(session.get("income", 0)),
         state=session.get("state"),
         category=session.get("category"),
-        schemes=matched
+        schemes=matched,
+        ai_summary=ai_summary
     )
 
 
