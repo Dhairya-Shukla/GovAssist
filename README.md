@@ -31,7 +31,7 @@ GovAssist is a web application where users enter basic profile details (age, gen
 ## Tech Stack
 
 - **Backend:** Python, Flask
-- **Frontend:** HTML, CSS, Bootstrap 5
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap 5
 - **AI Integration:** Google Gemini API (`google-genai` SDK)
 - **Data:** Custom-curated JSON-style scheme database (Python)
 - **Session Management:** Flask sessions
@@ -122,7 +122,7 @@ Visit `http://127.0.0.1:5000` in your browser.
 | Name | Role |
 |---|---|
 | **Dhairya Shukla** (Team Lead) | Backend Development — Flask routes, eligibility logic, Gemini AI integration |
-| **Deepanshu Joshi** | Frontend Development — UI/UX, HTML/CSS templates |
+| **Deepanshu Joshi** | Frontend Development — UI/UX, HTML/CSS/JavaScript templates |
 | **Ayush Bhatt** | Scheme Database — Researched and structured the 198+ government scheme records |
 | **Gyanvi Petwal** | Eligibility Logic & Testing — Refined matching rules and tested edge cases across user profiles |
 
